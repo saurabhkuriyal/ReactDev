@@ -1,6 +1,7 @@
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+import StoreProvider from "./StoreProvider";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -22,7 +23,9 @@ export default function RootLayout({ children }) {
       <body
         className="bg-slate-900"
       >
-        {children}
+        <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_OAUTH}>
+        <StoreProvider>{children}</StoreProvider>
+        </GoogleOAuthProvider>
       </body>
     </html>
   );

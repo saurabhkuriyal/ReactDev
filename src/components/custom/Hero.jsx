@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 //import axios from "axios";
+import { useAppSelector } from "@/lib/hooks";
 import { CornerDownRight, Link } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -13,9 +14,23 @@ export default function Hero() {
 
   const [prompt, setPrompt] = useState("");
 
+  const [forDialog,setForDialog]=useState(true);
+
+  const id=useAppSelector((state)=>state.userId)
+
   async function handleSubmit() {
     //router.push("/workspace/123");
-    router.push(`/workspace/123?prompt=${encodeURIComponent(prompt)}`);
+    if(id===""){
+      setForDialog(true);
+    }else{
+      setForDialog(false);
+      //router.push(`/workspace/123?prompt=${encodeURIComponent(prompt)}`);
+    }
+    
+  }
+
+  function forClosing(e) {
+    setForDialog(false);
   }
 
   return (
@@ -45,7 +60,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <SignupDialog/>
+      <SignupDialog forDialog={forDialog} forClosing={forClosing}/>
 
     </div>
   );

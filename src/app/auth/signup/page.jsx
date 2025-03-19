@@ -1,14 +1,22 @@
 "use client";
 
+import { setUser } from "@/lib/features/userSlice";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import axios from "axios";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function page() {
+
+  const dispatch=useAppDispatch();
+  const name=useAppSelector((state)=>state.username);
 
   const [ formDetails,setFormDetails]=useState({
     username:"",
     email:""
   })
+
+  
 
   function handelChange(e){
     setFormDetails((prevValue)=>{
@@ -16,8 +24,6 @@ export default function page() {
             [e.target.name]:e.target.value,}
     })
 
-    console.log("This is form Detail",formDetails);
-    
   }
 
   async function handleSubmit(e) {
@@ -27,13 +33,26 @@ export default function page() {
       
       const response=await axios.post("/api/user",formDetails);
 
-      console.log(response);
+      console.log("This is response",response.data.data);
+
+      dispatch(
+        setUser({
+          userId:response.data.data.id,
+          username:response.data.data.username,
+          email:response.data.data.email})
+        )
+
+            
       
     } catch (error) {
       console.log(error);
       
     }
   }
+  
+
+  console.log("There is the name",name);
+
   
   return (
     <div>
@@ -43,6 +62,7 @@ export default function page() {
             <label htmlFor="emial">Email</label><br />
             <input type="text" onChange={handelChange} name="email" placeholder='Enter your email'/><br /><br />c
             <button type="submit" className="bg-slate-50" onClick={handleSubmit}> Signup</button>
+            <Link href="/auth/login" className="text-white">Login page</Link>
     </div>
   )
 }

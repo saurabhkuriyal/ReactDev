@@ -13,7 +13,7 @@ export async function POST(req) {
         console.log("There is the user",user);
         
         
-        return NextResponse.json({status:200},{success:true,data:user});
+        return NextResponse.json({status:200 ,success:true,data:user});
         
     } catch (error) {
         console.log(error);
