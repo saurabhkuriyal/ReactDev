@@ -3,6 +3,6 @@ export const steps = [
     '/tailwind.config.js',
     '/postcss.config.js',
     '/package.json',
-    '/App.css',
+    'src/App.css',
     '/index.js'
 ]

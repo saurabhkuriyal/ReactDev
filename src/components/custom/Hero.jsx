@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useAppSelector } from "@/lib/hooks";
 import { CornerDownRight, Link } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SignupDialog from "./SignupDialog";
 
 export default function Hero() {
@@ -14,9 +14,18 @@ export default function Hero() {
 
   const [prompt, setPrompt] = useState("");
 
-  const [forDialog,setForDialog]=useState(true);
+  const [forDialog,setForDialog]=useState(false);
 
   const id=useAppSelector((state)=>state.userId)
+
+  const username=useAppSelector((state)=>state.username)
+
+  useEffect(()=>{
+    if(id){
+      setForDialog(false);
+    }
+  },[id])
+
 
   async function handleSubmit() {
     //router.push("/workspace/123");
@@ -24,7 +33,7 @@ export default function Hero() {
       setForDialog(true);
     }else{
       setForDialog(false);
-      //router.push(`/workspace/123?prompt=${encodeURIComponent(prompt)}`);
+      router.push(`/workspace/123?prompt=${encodeURIComponent(prompt)}`);
     }
     
   }
@@ -40,6 +49,7 @@ export default function Hero() {
 
       <div className="flex flex-col justify-center items-center min-h-screen">
 
+        <h1 className="text-white text-2xl">Hi! {username}</h1>
         <h1 className="text-white text-4xl px-2 py-5 mx-4">Build anything you want...</h1>
         <em className="text-white px-2 pb-5 mx-4">Harness the power of LLM in coding and development</em>
 

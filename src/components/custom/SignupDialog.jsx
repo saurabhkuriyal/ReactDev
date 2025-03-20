@@ -62,9 +62,12 @@ export default function SignupDialog(props) {
 
     return (
         <div><Dialog open={props.forDialog} onOpenChange={(e)=>{props.forClosing(e)}}>
-            <DialogContent>
+            <DialogContent className="bg-slate-900">
                 <DialogHeader>
-                    <DialogTitle>Just a step far..</DialogTitle>
+                    <div className="flex justify-center items-center pb-2">
+                    <DialogTitle className="text-white">Just a step away . . .</DialogTitle>
+                    </div>
+                    
                     <DialogDescription className="flex justify-center items-center">
                         <Button className="bg-blue-600" onClick={googleLogin}>Sign in with google</Button>
                     </DialogDescription>
