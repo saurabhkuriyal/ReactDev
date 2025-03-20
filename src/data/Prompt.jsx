@@ -19,7 +19,7 @@ Return the response in JSON format with the following schema:
   "projectTitle": "",
   "explanation": "",
   "files": {
-    "src/App.js": {
+    "/App.js": {
       "code": ""
     },
     ...
@@ -39,7 +39,7 @@ Copy code
   "projectTitle": "",
   "explanation": "",
   "files": {
-    "src/App.js": {
+    "/App.js": {
       "code": ""
     },
     ...
@@ -48,7 +48,7 @@ Copy code
 }
 Ensure the files field contains all created files, and the generatedFiles field lists all the filenames. Each file's code should be included in the code field, following this example:
 files:{
-  "src/App.js": {
+  "/App.js": {
     "code": "import React from 'react';\nimport './styles.css';\nexport default function App() {\n  return (\n    <div className='p-4 bg-gray-100 text-center'>\n      <h1 className='text-2xl font-bold text-blue-500'>Hello, Tailwind CSS with Sandpack!</h1>\n      <p className='mt-2 text-gray-700'>This is a live code editor.</p>\n    </div>\n  );\n}"
   }
 }

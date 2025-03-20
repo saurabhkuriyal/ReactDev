@@ -24,7 +24,7 @@ export default {
   </body>
 </html>`
     },
-    '/src/App.css': {
+    '/App.css': {
       code: `
             @tailwind base;
 @tailwind components;
