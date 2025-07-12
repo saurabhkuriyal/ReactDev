@@ -1,16 +1,17 @@
-import { chatSession } from "@/configs/AiModel";
+// import { chatSession } from "@/configs/AiModel";
+import { Aireponse } from "@/configs/AiModel";
 import { NextResponse } from "next/server";
 export async function POST(req) {
     try {
         
         const {Prompt}=await req.json();
 
-        const result = await chatSession.sendMessage(Prompt);
+        const result = await Aireponse(Prompt);
 
         console.log("reached here");
         
-        const data=result.response.text();
-        //console.log("This is response",result.response.text());
+        const data=result.candidates[0].content.parts[0].text;
+        console.log("This is response------",data);
 
         return NextResponse.json({success:true,
             code:JSON.parse(data)

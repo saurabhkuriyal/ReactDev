@@ -33,13 +33,22 @@ Generate a programming code structure for a React project using Vite. Create mul
 
 Return the response in JSON format with the following schema:
 
-json
-Copy code
+No need to create src directory
+
 {
   "projectTitle": "",
   "explanation": "",
   "files": {
     "/App.js": {
+      "code": ""
+    },
+    "/App.css": {
+      "code": ""
+    },
+    "/components/item.js": {
+      "code": ""
+    },
+    "/pages/item.js": {
       "code": ""
     },
     ...

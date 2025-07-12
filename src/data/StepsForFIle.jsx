@@ -1,8 +1,8 @@
 export const steps = [
-    'public/index.html',
+    '/public/index.html',
     '/tailwind.config.js',
     '/postcss.config.js',
     '/package.json',
-    'src/App.css',
+    '/App.css',
     '/index.js'
 ]
