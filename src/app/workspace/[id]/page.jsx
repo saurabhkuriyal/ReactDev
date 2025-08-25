@@ -7,81 +7,66 @@ import { steps } from "@/data/StepsForFIle";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-export default function page() {
 
+export default function Page() {
   const searchParams = useSearchParams();
   const data = searchParams.get("prompt");
-  let [result,setResult]=useState({});
-  let [newsteps,setSteps]=useState([]);
+  const [result, setResult] = useState({});
+  const [newsteps, setSteps] = useState([]);
 
-  console.log("This is data", data);
+  // Load initial response
+  useEffect(() => {
+    if (data) handleSubmit(data);
+  }, [data]);
 
-  //after getting user feedback
-  useEffect(()=>{
-
-    handleSubmit(data);
-  },[])
-  // for handling Submit
   async function handleSubmit(prompt) {
-
-    setSteps(prevSteps=>[
-      prevSteps,
-      ...steps
-    ])
+    setSteps((prevSteps) => [...prevSteps, ...steps]);
 
     try {
-      
-        const PROMPT=Prompt.CODE_GEN_PROMPT+" "+prompt;
-        // console.log("-------",PROMPT);
-        
-        
-        const response=await axios.post("/api/AI-response",
-            {
-                Prompt:PROMPT
-            });
+      const PROMPT = Prompt.CODE_GEN_PROMPT + " " + prompt;
+      const response = await axios.post("/api/AI-response", { Prompt: PROMPT });
 
-        console.log("This is response from backend",response.data.code);
+      setResult((prevFiles) => ({
+        ...prevFiles,
+        ...response.data.code.files,
+      }));
 
-        console.log("This is response for files",response.data.code.files);
-
-        setResult(prevFiles => ({
-          
-          ...prevFiles, // Keep previous files
-          ...response.data.code.files, // Merge new files
-        }));
-
-        setSteps(prevSteps=>[
-          ...prevSteps,
-          ...response.data.code.generatedFiles,
-        ])
-
-        console.log("Result is ",newsteps);
-        
-        
-
+      setSteps((prevSteps) => [
+        ...prevSteps,
+        ...response.data.code.generatedFiles,
+      ]);
     } catch (error) {
-        console.log(error);
-
+      console.log(error);
     }
-}
-  
-
-useEffect(() => {
-  console.log("Updated result in Workspace:", result);
-}, [result]);
+  }
 
   return (
-    <div>
-      <Header/>
-      <div className="py-3 px-4 grid md:grid-cols-4 grid-cols-1 gap-7">
-        <div className="col-span-1 bg-black rounded-lg ">
-          <ChatView data={data} steps={newsteps} forHandlingSubmit={handleSubmit}/>
+    <div className="relative min-h-screen w-full bg-black text-white overflow-hidden">
+      {/* background gradient (same as Hero) */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_50%_-20%,rgba(120,119,198,0.25),rgba(255,255,255,0))]"></div>
+
+      {/* content wrapper */}
+      <div className="relative z-10 flex flex-col min-h-screen">
+        <div className="border-b border-white/10 shadow-md">
+          <Header />
         </div>
-        <div className="col-span-3">
-          <CodeView data={result}/>
+
+        <div className="flex-1 py-6 px-4 md:px-8 grid md:grid-cols-4 grid-cols-1 gap-6">
+          {/* Chat section */}
+          <div className="col-span-1">
+            <ChatView
+              data={data}
+              steps={newsteps}
+              forHandlingSubmit={handleSubmit}
+            />
+          </div>
+
+          {/* Code section */}
+          <div className="col-span-3">
+            <CodeView data={result} />
+          </div>
         </div>
-        
       </div>
     </div>
-  )
+  );
 }

@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className="bg-slate-900"
+        className="bg-slate-900" 
       >
         <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_OAUTH}>
         <StoreProvider>{children}</StoreProvider>
