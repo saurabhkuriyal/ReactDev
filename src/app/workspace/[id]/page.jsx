@@ -14,7 +14,7 @@ export default function page() {
   let [result,setResult]=useState({});
   let [newsteps,setSteps]=useState([]);
 
-  //console.log("This is data", data);
+  console.log("This is data", data);
 
   //after getting user feedback
   useEffect(()=>{
@@ -25,6 +25,7 @@ export default function page() {
   async function handleSubmit(prompt) {
 
     setSteps(prevSteps=>[
+      prevSteps,
       ...steps
     ])
 

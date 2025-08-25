@@ -6,6 +6,7 @@ export default function page() {
     <div>
       <Header/>
       <Hero/>
+      
     </div>
   )
 }

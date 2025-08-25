@@ -1,4 +1,5 @@
 "use client";
+
 import {
     Dialog,
     DialogContent,
@@ -13,16 +14,14 @@ import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { Button } from "../ui/button";
 
-
 export default function SignupDialog(props) {
-
-    const dispatch=useAppDispatch();
+    const dispatch = useAppDispatch();
+    console.log("Reached here");
 
     const googleLogin = useGoogleLogin({
         onSuccess: async (tokenResponse) => {
             console.log("Google Access Token:", tokenResponse.access_token);
 
-            // Use the access token to fetch user profile
             const userInfo = await axios.get(
                 "https://www.googleapis.com/oauth2/v2/userinfo",
                 { headers: { Authorization: `Bearer ${tokenResponse.access_token}` } }
@@ -32,11 +31,10 @@ export default function SignupDialog(props) {
 
             const payload = {
                 username: userInfo.data.name,
-                email: userInfo.data.email
-            }
+                email: userInfo.data.email,
+            };
 
             try {
-
                 const response = await axios.post("/api/user", payload);
 
                 console.log("Response from user", response);
@@ -44,36 +42,46 @@ export default function SignupDialog(props) {
                     setUser({
                         userId: response.data.data.id,
                         username: response.data.data.username,
-                        email: response.data.data.email
+                        email: response.data.data.email,
                     })
-                )
-
+                );
             } catch (error) {
+                console.log("here is the error");
                 console.log(error);
-
             }
-
-
-
         },
-        onError: errorResponse => console.log("Login Error:", errorResponse),
+        onError: (errorResponse) => console.log("Login Error:", errorResponse),
     });
 
-
     return (
-        <div><Dialog open={props.forDialog} onOpenChange={(e)=>{props.forClosing(e)}}>
-            <DialogContent className="bg-slate-900">
-                <DialogHeader>
-                    <div className="flex justify-center items-center pb-2">
-                    <DialogTitle className="text-white">Just a step away . . .</DialogTitle>
-                    </div>
-                    
-                    <DialogDescription className="flex justify-center items-center">
-                        <Button className="bg-blue-600" onClick={googleLogin}>Sign in with google</Button>
-                    </DialogDescription>
-                </DialogHeader>
-            </DialogContent>
-        </Dialog>
+        <div>
+            <Dialog open={props.forDialog} onOpenChange={(e) => props.forClosing(e)}>
+                <DialogContent className="bg-slate-900 text-white border border-slate-700 rounded-2xl shadow-2xl max-w-md mx-auto">
+                    <DialogHeader className="space-y-4">
+                        {/* Title */}
+                        <div className="flex justify-center items-center">
+                            <DialogTitle className="text-2xl font-semibold tracking-wide">
+                                Just a step away . . .
+                            </DialogTitle>
+                        </div>
+
+                        {/* Description */}
+                        <DialogDescription className="flex flex-col items-center justify-center space-y-4">
+                            <p className="text-slate-400 text-center text-sm">
+                                Sign in securely with Google to continue
+                            </p>
+
+                            {/* Button */}
+                            <Button
+                                onClick={googleLogin}
+                                className="w-full bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600 hover:from-blue-600 hover:via-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-3 rounded-xl shadow-lg transition-all duration-300 hover:scale-[1.03]"
+                            >
+                                <span className="mr-2">🔑</span> Sign in with Google
+                            </Button>
+                        </DialogDescription>
+                    </DialogHeader>
+                </DialogContent>
+            </Dialog>
         </div>
-    )
+    );
 }
