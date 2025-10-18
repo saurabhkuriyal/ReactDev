@@ -7,7 +7,7 @@ export default function Footer(){
     const router = useRouter();
 
     function handleClick(e){
-        router.push('/portfolio');
+        router.push('/UnderDevelopment');
     }
 
 

@@ -1,11 +1,14 @@
-import Header from "@/components/custom/Header";
-import Hero from '@/components/custom/Hero';
 
+import Hero from '@/components/custom/Hero';
+import Intro from "@/components/custom/Intro";
+import Pricing from "@/components/custom/Pricing";
 export default function page() {
   return (
     <div>
-      <Header/>
       <Hero/>
+      <Intro/>
+      <Pricing/>
+      
       
     </div>
   )

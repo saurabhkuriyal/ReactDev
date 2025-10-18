@@ -1,7 +1,7 @@
 "use client";
 import ChatView from "@/components/custom/ChatView";
 import CodeView from "@/components/custom/CodeView";
-import Header from "@/components/custom/Header";
+
 import Prompt from "@/data/Prompt";
 import { steps } from "@/data/StepsForFIle";
 import axios from "axios";
@@ -47,23 +47,20 @@ export default function Page() {
 
       {/* content wrapper */}
       <div className="relative z-10 flex flex-col min-h-screen">
-        <div className="border-b border-white/10 shadow-md">
-          <Header />
-        </div>
 
-        <div className="flex-1 py-6 px-4 md:px-8 grid md:grid-cols-4 grid-cols-1 gap-6">
-          {/* Chat section */}
-          <div className="col-span-1">
+        <div className="flex-1 py-6 px-4 md:px-8 grid grid-cols-1 md:grid-cols-4 gap-6">
+          {/* On mobile → CodeView first */}
+          <div className="order-1 md:order-2 col-span-1 md:col-span-3">
+            <CodeView data={result} />
+          </div>
+
+          {/* On mobile → ChatView second */}
+          <div className="order-2 md:order-1 col-span-1">
             <ChatView
               data={data}
               steps={newsteps}
               forHandlingSubmit={handleSubmit}
             />
-          </div>
-
-          {/* Code section */}
-          <div className="col-span-3">
-            <CodeView data={result} />
           </div>
         </div>
       </div>

@@ -1,3 +1,5 @@
+import Base from "@/components/custom/Base";
+import Header from "@/components/custom/Header";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -24,7 +26,11 @@ export default function RootLayout({ children }) {
         className="bg-slate-900" 
       >
         <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_OAUTH}>
-        <StoreProvider>{children}</StoreProvider>
+        <StoreProvider>
+          <Header/>
+          {children}
+          <Base/>
+        </StoreProvider>
         </GoogleOAuthProvider>
       </body>
     </html>
