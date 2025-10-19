@@ -2,6 +2,8 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 export default function Pricing() {
+
+    //Demo pricing
     const plans = [
         {
             name: "Free",
@@ -65,8 +67,8 @@ export default function Pricing() {
                         <div
                             key={idx}
                             className={`rounded-2xl border ${plan.highlight
-                                    ? "bg-neutral-900 border-purple-600 shadow-lg"
-                                    : "bg-neutral-950 border-white/10"
+                                ? "bg-neutral-900 border-purple-600 shadow-lg"
+                                : "bg-neutral-950 border-white/10"
                                 } p-8 flex flex-col justify-between hover:scale-105 transition-transform`}
                         >
                             <div>
@@ -82,17 +84,17 @@ export default function Pricing() {
                                 </ul>
                             </div>
                             <Link href="/UnderDevelopment" className="text-sm font-medium text-gray-300 hover:text-white transition">
-                                    <Button
-                                variant={plan.variant}
-                                className={`mt-8 w-full ${plan.highlight
+                                <Button
+                                    variant={plan.variant}
+                                    className={`mt-8 w-full ${plan.highlight
                                         ? "bg-purple-600 hover:bg-purple-700 text-white"
                                         : ""
-                                    }`}
-                            >
-                                {plan.cta}
-                            </Button>                
+                                        }`}
+                                >
+                                    {plan.cta}
+                                </Button>
                             </Link>
-                            
+
                         </div>
                     ))}
                 </div>
