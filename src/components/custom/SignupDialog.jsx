@@ -24,6 +24,7 @@ export default function SignupDialog(props) {
         setMounted(true);
     }, []);
 
+    // Google OAuth Login
     const googleLogin = useGoogleLogin({
         onSuccess: async (tokenResponse) => {
             console.log("Google Access Token:", tokenResponse.access_token);
