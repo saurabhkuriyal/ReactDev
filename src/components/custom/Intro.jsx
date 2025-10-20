@@ -4,7 +4,7 @@ export default function ProductIntro() {
     return (
         <section className="relative w-full bg-black text-white overflow-hidden py-20">
             {/* background gradient */}
-            <div className="absolute"></div>
+            {/* <div className="absolute"></div> */}
 
             <div className="container relative z-10 mx-auto px-6 md:px-12 lg:px-20">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
