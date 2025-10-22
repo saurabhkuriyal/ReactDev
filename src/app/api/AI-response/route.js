@@ -8,10 +8,10 @@ export async function POST(req) {
 
         const result = await AiResponse(Prompt);
 
-        console.log("reached here");
+        //console.log("reached here");
         
         const data=result.candidates[0].content.parts[0].text;
-        console.log("This is response------",data);
+        //console.log("This is response------",data);
 
         return NextResponse.json({success:true,
             code:JSON.parse(data)
