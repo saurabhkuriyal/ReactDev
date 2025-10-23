@@ -27,7 +27,7 @@ export default function CodeView(props) {
     }
   }, [props.data]);
 
-
+  //for messages due to loading
   const messages = [
     "on Processing",
     "still working",
@@ -43,7 +43,7 @@ export default function CodeView(props) {
 
       setTimeout(() => {
         setLoadingMessages(msg);
-      }, index * 4000); // Change message every 4 seconds
+      }, index * 5000); // Change message every 4 seconds
     })
   }
 
