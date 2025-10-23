@@ -10,6 +10,9 @@ export default function ChatView(props) {
     const [steps, setSteps] = useState([]);
     const [active, setActive] = useState(true);
 
+
+    //function for setting up steps one by one
+
     useEffect(() => {
         setActive(true);
         setSteps([]);
