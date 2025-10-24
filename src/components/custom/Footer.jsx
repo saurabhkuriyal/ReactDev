@@ -18,7 +18,7 @@ export default function Footer(){
             id="portfolio"
             className="mx-1 text-white border border-r-2"
             onClick={handleClick}>
-                Create Portolio Website
+                Create Portfolio Website
         </Button>
         <Button variant="ghost" className="mx-1 text-white border border-r-2">Create a todo App</Button>
         <Button variant="ghost" className="mx-1 text-white border border-r-2">Create a Branding Page</Button>
