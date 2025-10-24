@@ -19,6 +19,7 @@ export default function Hero() {
     if (id) setForDialog(false);
   }, [id]);
 
+  //funcition to handle submission adn redirection
   async function handleSubmit() {
     if (!prompt.trim()) return;
     if (!id) {
