@@ -20,7 +20,7 @@ export default function page() {
                 </p>
 
                 <p className="text-sm font-light text-gray-500">
-                    Please check back soon!
+                    Please come back soon!
                 </p>
 
                 {/* The section with the mail icon */}
