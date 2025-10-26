@@ -96,9 +96,7 @@ export default function Header() {
                         <Link href="/developer" className="block rounded-lg px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-white/10">
                             Meet Developer
                         </Link>
-                        {/* <Link href="/contact" className="block rounded-lg px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-white/10">
-                            Contact
-                        </Link> */}
+        
                     </div>
                     <div className="mt-6 flex gap-2">
                         <Link href="/UnderDevelopment" className="w-1/2">
