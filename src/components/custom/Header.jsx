@@ -48,9 +48,6 @@ export default function Header() {
                     <Link href="https://sourabh-kuriyal.vercel.app/" className="text-sm font-medium text-gray-300 hover:text-white transition">
                         Meet Developer
                     </Link>
-                    {/* <Link href="/contact" className="text-sm font-medium text-gray-300 hover:text-white transition">
-                        Contact
-                    </Link> */}
                 </PopoverGroup>
 
                 {/* Desktop Buttons */}
