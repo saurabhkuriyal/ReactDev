@@ -4,6 +4,5 @@ export const steps = [
     '/postcss.config.js',
     '/package.json',
     '/index.js',
-    '/App.css'
-    
+    '/App.css' 
 ]
