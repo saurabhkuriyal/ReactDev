@@ -23,7 +23,7 @@ export const AiResponse = async (prompt) => {
     //console.log("My Gemini API Key is:", process.env.GEMINI_API_KEY);
     //console.log("Reached here in AI Model page------>");
 
-    const contents = prompt
+    const contents = prompt;
 
     //console.log("P--R--O--M--P--T", contents);
 
@@ -42,7 +42,7 @@ export const AiResponse = async (prompt) => {
 
 
 
-    return response
+    return response;
 
 
 }
