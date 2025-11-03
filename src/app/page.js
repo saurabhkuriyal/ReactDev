@@ -8,8 +8,6 @@ export default function page() {
       <Hero/>
       <Intro/>
       <Pricing/>
-      
-      
     </div>
   )
 }
