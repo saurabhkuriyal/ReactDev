@@ -65,7 +65,7 @@ export const AiResponse = async (prompt) => {
 
     const contents = prompt;
 
-    //console.log("P--R--O--M--P--T", contents);
+    console.log("P--R--O--M--P--T", contents);
 
 
     const response = await client.responses.create({
