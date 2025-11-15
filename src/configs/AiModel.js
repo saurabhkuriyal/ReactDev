@@ -69,13 +69,13 @@ export const AiResponse = async (prompt) => {
 
 
     const response = await client.responses.create({
-    model: "gpt-5-nano",
-    input: contents,
-});
+        model: "gpt-5-nano",
+        input: contents,
+    });
 
-    console.log("----RESOPONSE----",response);
-    console.log("here is this ",response.output_text);
-    
+    console.log("----RESOPONSE----", response);
+    console.log("here is this ", response.output_text);
+
     // console.log("---RESOPONSE----",response.candidates[0].content);
 
     // console.log("----RESOPONSE----",response.candidates[0].content.parts[0].text);
