@@ -3,7 +3,7 @@ import { useAppSelector } from "@/lib/hooks";
 
 export default function page() {
 
-    const name=useAppSelector((state)=>state.username);
+    const name = useAppSelector((state) => state.username);
 
     //console.log("This is the name", name);
     return (
