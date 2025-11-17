@@ -82,10 +82,10 @@ export default function PortfolioPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const data= JSON.stringify(formData);
-        const obj={
-            data:data,
-            prompt:"Create a beautiful portfolio website"
+        const data = JSON.stringify(formData);
+        const obj = {
+            data: data,
+            prompt: "Create a beautiful portfolio website"
         }
 
         router.push(`/workspace/123?prompt=${encodeURIComponent(obj)}`);
