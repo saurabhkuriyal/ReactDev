@@ -14,7 +14,7 @@ export default function Page() {
   const [result, setResult] = useState({});
   const [newsteps, setSteps] = useState([]);
 
-  // Load initial response
+  // Load initial response after mount if prompt exists
   useEffect(() => {
     if (data) handleSubmit(data);
   }, [data]);
